@@ -72,6 +72,7 @@ export interface PropertyOptions {
 	reflectToAttribute?: boolean
 	readOnly?: boolean
 	computed?: string
+        statePath?: string
 	observer?: string | ((val: any, old: any) => void)
 }
 
@@ -81,6 +82,7 @@ function createProperty(proto: any, name: string, options?: PropertyOptions): vo
 	const readOnly = (options && options.readOnly) || false
 	const computed = (options && options.computed) || ""
 	const observer = (options && options.observer) || ""
+	const statePath = (options && options.statePath) || null
 
 	let type
 	if (options && options.hasOwnProperty("type")) {
@@ -102,7 +104,8 @@ function createProperty(proto: any, name: string, options?: PropertyOptions): vo
 		Object.defineProperty(proto.constructor, "properties", { value: {} })
 	}
 
-	const finalOpts: PropertyOptions = { type, notify, reflectToAttribute, readOnly, computed, observer }
+	const finalOpts: PropertyOptions = statePath ? { type, notify, reflectToAttribute, readOnly, computed, observer, statePath }
+	             : { type, notify, reflectToAttribute, readOnly, computed, observer };
 	proto.constructor.properties[name] = finalOpts
 }
 
