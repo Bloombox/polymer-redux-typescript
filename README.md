@@ -1,11 +1,13 @@
 
-## install & configure this module in an other a typeScript project
 
+## polymer-redux-typescript
 
 - step 1: install dependency
+> npm install --save polymer-redux-typescript
 
-> Install you dependency
-> npm install --save taktik-polymer-typescript
+or
+
+> yarn add polymer-redux-typescript
 
 - step 2: use node module resolution in tsconfig.json
 ```json
@@ -19,5 +21,15 @@
 
 - step 3: import where you need
 ```typescript
-import {customElement} from 'taktik-polymer-typescript' // Import elements
+import {element, polymer} from 'polymer-redux-typescript'
+
+// ... later (after setting up ReduxMixin)...
+
+@element("sample-element")
+class SampleElement extends ReduxMixin(Polymer.Element) {
+  // .. your element ..
+  @property({statePath: 'some.state.path'})
+  prop?: string
+}
 ```
+
