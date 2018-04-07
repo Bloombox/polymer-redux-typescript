@@ -1,6 +1,7 @@
 {
     "name": "@bloombox/polymer-redux-typescript",
     "version": "0.0.1",
+    "private": "false",
     "main": "dist/src/index.js",
     "types": "dist/src/index.d.ts",
     "scripts": {
