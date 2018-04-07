@@ -81,7 +81,7 @@ function createProperty(proto: any, name: string, options?: PropertyOptions): vo
 		Object.defineProperty(proto.constructor, "properties", { value: {} })
 	}
 
-	const finalOpts: PropertyOptions = statePath ? { type, notify, reflectToAttribute, readOnly, computed, observer, statePath, readOnly: true }
+	const finalOpts: PropertyOptions = statePath ? { type, notify, reflectToAttribute, computed, observer, statePath, readOnly: true }
 	             : { type, notify, reflectToAttribute, readOnly, computed, observer };
 	proto.constructor.properties[name] = finalOpts
 }

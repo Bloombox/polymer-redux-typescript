@@ -8,18 +8,12 @@ import "../type/shadow";
 import "../type/polymer";
 import "../type/iron-ajax";
 import "../type/missing";
-export declare function customElement(tagname: string): (clazz: any) => void;
+export declare function element(tagname: string): (clazz: any) => void;
 /**
  * A TypeScript class decorator that declare a global class
  * `tagname` and the decorated class.
  */
 export declare function jsElement(): (clazz: any) => void;
-/**
- * A TypeScript property decorator factory that defines this as a Polymer
- * property.
- *
- * This function must be invoked to return a decorator.
- */
 export interface PropertyOptions {
     /**
      * This field can be omitted if the Metadata Reflection API is configured.

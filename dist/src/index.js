@@ -1,7 +1,7 @@
 define("taktik-polymer-typeScript", ["require", "exports", "reflect-metadata", "../type/element", "../type/shadow", "../type/polymer", "../type/iron-ajax", "../type/missing"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    function customElement(tagname) {
+    function element(tagname) {
         return (clazz) => {
             clazz.is = tagname;
             window[clazz.name] = clazz; // Register class in windows se that is can be use without IMD module loading.
@@ -9,7 +9,7 @@ define("taktik-polymer-typeScript", ["require", "exports", "reflect-metadata", "
             window.customElements.define(tagname, clazz);
         };
     }
-    exports.customElement = customElement;
+    exports.element = element;
     /**
      * A TypeScript class decorator that declare a global class
      * `tagname` and the decorated class.
@@ -44,7 +44,7 @@ define("taktik-polymer-typeScript", ["require", "exports", "reflect-metadata", "
         if (!proto.constructor.hasOwnProperty("properties")) {
             Object.defineProperty(proto.constructor, "properties", { value: {} });
         }
-        const finalOpts = statePath ? { type, notify, reflectToAttribute, readOnly, computed, observer, statePath }
+        const finalOpts = statePath ? { type, notify, reflectToAttribute, computed, observer, statePath, readOnly: true }
             : { type, notify, reflectToAttribute, readOnly, computed, observer };
         proto.constructor.properties[name] = finalOpts;
     }
