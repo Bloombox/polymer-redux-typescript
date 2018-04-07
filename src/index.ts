@@ -14,7 +14,7 @@ declare interface ProjectWindow extends Window {
 }
 declare var window: ProjectWindow
 
-export function customElement(tagname: string) {
+export function element(tagname: string) {
 	return (clazz: any) => {
 		clazz.is = tagname
 		window[clazz.name] = clazz // Register class in windows se that is can be use without IMD module loading.
@@ -33,29 +33,6 @@ export function jsElement() {
 	}
 }
 
-// export interface PropertyOptions {
-// 	notify?: boolean
-// 	type?: any
-// 	value?: any
-// }
-
-/**
- * A TypeScript property decorator factory that defines this as a Polymer
- * property.
- *
- * This function must be invoked to return a decorator.
- */
-// export function property<T>(options?: PropertyOptions) {
-// 	return (proto: any, propName: string): any => {
-// 		const notify = (options && options.notify) as boolean
-// 		const type = Reflect.getMetadata("design:type", proto, propName)
-// 		const config = _ensureConfig(proto)
-// 		config.properties[propName] = {
-// 			type,
-// 			notify
-// 		}
-// 	}
-// }
 
 export interface PropertyOptions {
 	/**
@@ -104,7 +81,7 @@ function createProperty(proto: any, name: string, options?: PropertyOptions): vo
 		Object.defineProperty(proto.constructor, "properties", { value: {} })
 	}
 
-	const finalOpts: PropertyOptions = statePath ? { type, notify, reflectToAttribute, readOnly, computed, observer, statePath }
+	const finalOpts: PropertyOptions = statePath ? { type, notify, reflectToAttribute, readOnly, computed, observer, statePath, readOnly: true }
 	             : { type, notify, reflectToAttribute, readOnly, computed, observer };
 	proto.constructor.properties[name] = finalOpts
 }
