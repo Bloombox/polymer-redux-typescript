@@ -7,8 +7,6 @@ import "reflect-metadata"
 import "../type/element"
 import "../type/shadow"
 import "../type/missing"
-import "../type/polymer/polymer"
-import "../type/polymer/polymer-element"
 
 
 declare interface ProjectWindow extends Window {
