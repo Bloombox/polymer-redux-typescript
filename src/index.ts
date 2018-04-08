@@ -6,13 +6,17 @@
 import "reflect-metadata"
 import "../type/element"
 import "../type/shadow"
-import "../type/polymer"
-import "../type/iron-ajax"
 import "../type/missing"
+import "../type/polymer/polymer"
+import "../type/polymer/polymer-element"
+
+
 declare interface ProjectWindow extends Window {
 	[index: string]: any
 }
+
 declare var window: ProjectWindow
+
 
 export function element(tagname: string) {
 	return (clazz: any) => {
@@ -22,6 +26,7 @@ export function element(tagname: string) {
 		window.customElements.define(tagname, clazz)
 	}
 }
+
 /**
  * A TypeScript class decorator that declare a global class
  * `tagname` and the decorated class.
@@ -32,7 +37,6 @@ export function jsElement() {
 		// Useful for import in pure JS project.
 	}
 }
-
 
 export interface PropertyOptions {
 	/**
@@ -49,7 +53,7 @@ export interface PropertyOptions {
 	reflectToAttribute?: boolean
 	readOnly?: boolean
 	computed?: string
-        statePath?: string
+    statePath?: string
 	observer?: string | ((val: any, old: any) => void)
 }
 

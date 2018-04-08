@@ -1,4 +1,4 @@
-define("taktik-polymer-typeScript", ["require", "exports", "reflect-metadata", "../type/element", "../type/shadow", "../type/polymer", "../type/iron-ajax", "../type/missing"], function (require, exports) {
+define("taktik-polymer-typeScript", ["require", "exports", "reflect-metadata", "../type/element", "../type/shadow", "../type/missing", "../type/polymer/polymer", "../type/polymer/polymer-element"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     function element(tagname) {

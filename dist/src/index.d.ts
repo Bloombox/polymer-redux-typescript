@@ -5,9 +5,9 @@
 import "reflect-metadata";
 import "../type/element";
 import "../type/shadow";
-import "../type/polymer";
-import "../type/iron-ajax";
 import "../type/missing";
+import "../type/polymer/polymer";
+import "../type/polymer/polymer-element";
 export declare function element(tagname: string): (clazz: any) => void;
 /**
  * A TypeScript class decorator that declare a global class
